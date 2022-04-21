@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <div>
+    <hr>
+    <p>{{zombie.name}}</p>
+    <p>{{zombie.zombie_type.name}}</p>
+    <p>{{}}</p>
+    <p><a href="/zombies/{{zombie.id}}/edit">Edit</a></p>
+  </div>
+{% endblock %}

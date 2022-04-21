@@ -47,3 +47,17 @@ def update(zombie):
     sql = "UPDATE zombies SET (name, zombie_type_id) = (%s, %s) WHERE id = %s"
     values = [zombie.name, zombie.zombie_type.id, zombie.id]
     run_sql(sql, values)
+
+def humans(zombie):
+    humans = []
+
+    sql = "SELECT humans.* FROM humans INNER JOIN bitings ON bitings.human_id = humans.id WHERE zombie_id =%s"
+
+    values = [zombie.id]
+
+    results = run_sql(sql,values)
+
+    for row in results:
+        human = Human(row['name'], row['id'])
+        humans.append(human)
+    return humans
